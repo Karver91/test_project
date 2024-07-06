@@ -18,9 +18,9 @@ def browser(request):
     user_language = request.config.getoption("language")
     match browser_name:
         case BrowserName.CHROME.value:
+            print(f"\nstart {browser_name} browser for test..")
             options = webdriver.ChromeOptions()
             options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-            print(f"\nstart {browser_name} browser for test..")
             browser = settings.get_web_driver(name=BrowserName.CHROME, options=options)
         case BrowserName.FIREFOX.value:
             print(f"\nstart {browser_name} browser for test..")
