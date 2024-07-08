@@ -1,5 +1,3 @@
-from time import sleep
-
 from pages.base_page import BasePage
 from pages.locators import ProductPageLocators
 
@@ -15,6 +13,13 @@ class ProductPage(BasePage):
     def should_be_add_product_to_basket_button(self):
         assert self.is_element_present(locator=ProductPageLocators.ADD_PRODUCT), \
             f'Add_product button is not presented | locator {ProductPageLocators.ADD_PRODUCT}'
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(ProductPageLocators.PRODUCT_NAME_ALERT), \
+            "Success message is presented, but should not be"
+
+    def should_be_element_disappear(self):
+        assert self.is_disappeared(ProductPageLocators.PRODUCT_NAME_ALERT), "Element did not disappear"
 
     def add_product_is_success(self):
         add_product_button = self.get_element(locator=ProductPageLocators.ADD_PRODUCT)
