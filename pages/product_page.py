@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-from pages.locators import ProductPageLocators
+from pages.locators import ProductPageLocators, BasePageLocators
 
 
 class ProductPage(BasePage):
@@ -20,6 +20,10 @@ class ProductPage(BasePage):
 
     def should_be_element_disappear(self):
         assert self.is_disappeared(ProductPageLocators.PRODUCT_NAME_ALERT), "Element did not disappear"
+
+    def check_login_page_link(self):
+        self.should_be_login_link()
+        self.go_to_login_page()
 
     def add_product_is_success(self):
         add_product_button = self.get_element(locator=ProductPageLocators.ADD_PRODUCT)
