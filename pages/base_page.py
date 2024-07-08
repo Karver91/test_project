@@ -4,6 +4,8 @@ from selenium.common import NoSuchElementException, TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
+from pages.locators import BasePageLocators
+
 
 class BasePage:
     TIMEOUT = 4
@@ -15,6 +17,13 @@ class BasePage:
 
     def open(self):
         self.browser.get(url=self.url)
+
+    def go_to_login_page(self):
+        link = self.get_element(locator=BasePageLocators.LOGIN_LINK)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(locator=BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
     def is_element_present(self, locator):
         try:
