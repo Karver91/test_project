@@ -2,12 +2,24 @@ from selenium.webdriver.common.by import By
 
 
 class BasePageLocators:
+    BASKET_BUTTON = (
+        By.XPATH,
+        '//div[contains(@class, "basket-mini")]/child::span[@class="btn-group"]/child::a[contains(@class, "btn")]'
+    )
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
 
 
 class MainPageLocators:
     pass
+
+
+class BasketPageLocators:
+    BASKET_PRODUCT_FORM = (
+        By.XPATH,
+        '//div[@class="content"]/child::div[@id="content_inner"]/form[@id="basket_formset"]'
+    )
+    EMPTY_BASKET_MESSAGE = (By.XPATH, '//div[@class="content"]/child::div[@id="content_inner"]/p')
 
 
 class LoginPageLocators:
@@ -23,4 +35,3 @@ class ProductPageLocators:
     PRICE_ALERT = (By.XPATH, '//div[@id="messages"]/descendant::div[@class="alertinner "]/p/strong')
     PRODUCT_NAME = (By.CSS_SELECTOR, 'div.product_main > h1')
     PRODUCT_PRICE = (By.CSS_SELECTOR, 'div.product_main > p.price_color')
-
