@@ -8,7 +8,7 @@ from pages.locators import BasePageLocators
 
 
 class BasePage:
-    TIMEOUT = 4
+    TIMEOUT = 5
 
     def __init__(self, browser, url):
         self.browser = browser

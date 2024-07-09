@@ -6,6 +6,7 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.ie.service import Service as IEService
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.os_manager import ChromeType
+from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager, IEDriverManager
 from webdriver_manager.opera import OperaDriverManager
 
@@ -18,12 +19,12 @@ class Settings:
         """Принимает имя браузера, возвращает его веб-драйвер"""
         match name:
             case BrowserName.FIREFOX:
-                # return webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=options)
+                return webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=options)
 
                 # если firefox установлен через snap:
-                return webdriver.Firefox(
-                    service=FirefoxService(executable_path='/snap/bin/firefox.geckodriver'), options=options
-                )
+                # return webdriver.Firefox(
+                #     service=FirefoxService(executable_path='/snap/bin/firefox.geckodriver'), options=options
+                # )
             case BrowserName.CHROME:
                 return webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
             case BrowserName.CHROMIUM:
