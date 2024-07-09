@@ -8,6 +8,7 @@ class BasePageLocators:
     )
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 class MainPageLocators:
@@ -23,8 +24,24 @@ class BasketPageLocators:
 
 
 class LoginPageLocators:
-    LOGIN_FORM = (By.ID, "login_form")
-    REGISTRATION_FORM = (By.ID, "register_form")
+    LOGIN_FORM = (By.ID, 'login_form')
+    REGISTRATION_FORM = (By.ID, 'register_form')
+    REGISTRATION_EMAIL_FIELD = (
+        By.XPATH,
+        '//form[@id="register_form"]/descendant::input[@id="id_registration-email"]'
+    )
+    REGISTRATION_PASS_1_FIELD = (
+        By.XPATH,
+        '//form[@id="register_form"]/descendant::input[@id="id_registration-password1"]'
+    )
+    REGISTRATION_PASS_2_FIELD = (
+        By.XPATH,
+        '//form[@id="register_form"]/descendant::input[@id="id_registration-password2"]'
+    )
+    REGISTRATION_SUBMIT_BUTTON = (
+        By.XPATH,
+        '//form[@id="register_form"]/descendant::button[@type="submit"]'
+    )
 
 
 class ProductPageLocators:
